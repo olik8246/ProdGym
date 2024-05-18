@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Reviews {
+    private ReviewsDAO reviewsDAO = new ReviewsDAO();
     private Long id;
     private Long chatId;
     private String name;
@@ -32,6 +33,12 @@ public class Reviews {
     replyKeyboardMarkup.setKeyboard(keyboardRows);
     return replyKeyboardMarkup;
 }
+    public void saveReview(String name, String review) {
+        reviewsDAO.saveReview(name, review);
+    }
 
+    public String getAllReviews() {
+        return reviewsDAO.getAllReviews();
+    }
 
 }

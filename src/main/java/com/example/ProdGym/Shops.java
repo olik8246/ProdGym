@@ -7,27 +7,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Shops {
-        ReplyKeyboardMarkup getShopKeyboard() {
-        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
-        replyKeyboardMarkup.setSelective(true);
-        replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(false);
+        private double discount = 1.0;
 
-        List<KeyboardRow> keyboardRows = new ArrayList<>();
+        public ReplyKeyboardMarkup getShopKeyboard() {
+                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+                replyKeyboardMarkup.setSelective(true);
+                replyKeyboardMarkup.setResizeKeyboard(true);
+                replyKeyboardMarkup.setOneTimeKeyboard(false);
 
-        KeyboardRow row1 = new KeyboardRow();
-        row1.add("Шейкери");
-        row1.add("Пояси");
-        row1.add("Ризинки");
+                List<KeyboardRow> keyboardRows = new ArrayList<>();
 
-        KeyboardRow row2 = new KeyboardRow();
+                KeyboardRow row1 = new KeyboardRow();
+                row1.add("Шейкери");
+                row1.add("Пояси");
 
-        row2.add("Назад");
+                KeyboardRow row2 = new KeyboardRow();
+                row2.add("Ризинки");
 
-        keyboardRows.add(row1);
-        keyboardRows.add(row2);
+                KeyboardRow row3 = new KeyboardRow();
+                row3.add("Назад");
 
-        replyKeyboardMarkup.setKeyboard(keyboardRows);
-        return replyKeyboardMarkup;
-    }
+                keyboardRows.add(row1);
+                keyboardRows.add(row2);
+                keyboardRows.add(row3);
+
+                replyKeyboardMarkup.setKeyboard(keyboardRows);
+                return replyKeyboardMarkup;
+        }
+
+        public void setDiscount(double discount) {
+                this.discount = discount;
+        }
+
+        public String applyDiscount(double price) {
+                return String.format("%.2f", price * discount);
+        }
 }
